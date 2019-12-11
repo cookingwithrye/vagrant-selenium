@@ -70,6 +70,20 @@ chown vagrant:vagrant tmux.sh
 echo "ok"
 
 #=========================================================
+echo -n "Install tmux scripts..."
+#=========================================================
+SCRIPT=$(cat <<EOF
+#!/bin/sh
+tmux xrandr -s 1600x1200
+EOF
+)
+echo "${SCRIPT}"
+echo "${SCRIPT}" > resolution.sh
+chmod +x resolution.sh
+chown vagrant:vagrant resolution.sh
+echo "ok"
+
+#=========================================================
 echo -n "Install startup scripts..."
 #=========================================================
 STARTUP_SCRIPT=$(cat <<EOF
