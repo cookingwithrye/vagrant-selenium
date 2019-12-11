@@ -1,3 +1,40 @@
+README.md
+
+#Headless Chrome Setup Instructions for Local Selenium Development/Scraping
+
+Mac only instructions, however if VirtualBox and Vagrant are setup these exact steps should work the same on Windows.
+
+=
+
+1. On your host machine, install/update Homebrew, VirtualBox, Vagrant
+	https://medium.com/@JohnFoderaro/macos-sierra-vagrant-quick-start-guide-2b8b78913be3
+	
+	```
+	/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+	brew doctor
+	brew update
+	brew cask install virtualbox
+	brew cask install vagrant
+	```
+
+2. Create a directory for storing your VMs/boxes (unless modifying this box beyond the built-in selenium and chrome combination, using the same shared box for multiple purposes is probably ok)
+
+	e.g. `mkdir ~/vms`
+
+3. Clone this repo with a basic Ubuntu vagrant box that installs selenium server, a version of Chrome supporting headless
+
+	`git clone https://github.com/Anomen/vagrant-selenium`
+
+4. Start the box
+
+	`vagrant up`
+
+5. After bootup, selenium hub service should be listening on port 4444 bound to localhost (it's bound to the same port internally in the VM, this can be seen in the Vagrantfile config) 
+
+6. If you need to sign into a specific account in Chrome for automation, obviously that can be done automatically via selenium - or you can simply launch Chrome from cli in vm with `google-chrome` command, and perform actual login to service required using credentials and remember the password. Depends on your use-case.
+
+
+
 # vagrant-selenium
 Vagrant configuration base on ubuntu/trusty64, ready to be used with Selenium.
 
